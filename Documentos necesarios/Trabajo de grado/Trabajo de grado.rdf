@@ -1,0 +1,277 @@
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:z="http://www.zotero.org/namespaces/export#"
+ xmlns:dcterms="http://purl.org/dc/terms/"
+ xmlns:bib="http://purl.org/net/biblio#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:link="http://purl.org/rss/1.0/modules/link/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:vcard="http://nwalsh.com/rdf/vCard#"
+ xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/">
+    <bib:Article rdf:about="#item_96">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+           <bib:Journal></bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hoyos</foaf:surname>
+                        <foaf:givenName>Sergio Andrés Arenas</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_95"/>
+        <dc:title>PROTOTIPO PARA EL ANÁLISIS DE SEÑALES MIOELÉCTRICAS EN PRÓTESIS ELECTROMECÁNICAS DE MIEMBROS SUPERIORES</dc:title>
+        <z:language>es</z:language>
+        <z:libraryCatalog>Zotero</z:libraryCatalog>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_95">
+        <z:itemType>attachment</z:itemType>
+        <rdf:resource rdf:resource="files/95/Hoyos - Tesis PROTOTIPO PARA EL ANÁLISIS DE SEÑALES MIOELÉCTRICAS EN PRÓTESIS ELECTROMECÁNICAS DE MIEMBROS S.pdf"/>
+        <dc:title>PDF</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Book rdf:about="urn:isbn:978-0-8493-0461-3">
+        <z:itemType>book</z:itemType>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                       <vcard:locality>Boca Raton, Fla</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>CRC Press</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bronzino</foaf:surname>
+                        <foaf:givenName>Ed. Joseph D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_97"/>
+        <dc:title>The biomedical engineering handbook. 1</dc:title>
+        <dc:date>2000</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>K10plus ISBN</z:libraryCatalog>
+        <prism:volume>1</prism:volume>
+        <dc:identifier>ISBN 978-0-8493-0461-3</dc:identifier>
+    </bib:Book>
+    <z:Attachment rdf:about="#item_97">
+        <z:itemType>attachment</z:itemType>
+        <rdf:resource rdf:resource="files/97/2000 - The biomedical engineering handbook. 1.pdf"/>
+        <dc:title>PDF</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://www.dl.begellhouse.com/journals/4b27cbfc562e21b8,5b51f41866ab7f77,5d2cbc051cfa16a4.html">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0278-940X"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zecca</foaf:surname>
+                        <foaf:givenName>M.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Micera</foaf:surname>
+                        <foaf:givenName>Silvestro</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Carrozza</foaf:surname>
+                        <foaf:givenName>M. C.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Dario</foaf:surname>
+                        <foaf:givenName>P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_101"/>
+        <dc:title>Control of Multifunctional Prosthetic Hands by Processing the Electromyographic Signal</dc:title>
+        <dc:date>2002</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://www.dl.begellhouse.com/journals/4b27cbfc562e21b8,5b51f41866ab7f77,5d2cbc051cfa16a4.html</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2025-02-17 00:33:11</dcterms:dateSubmitted>
+        <bib:pages>459-485</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0278-940X">
+        <prism:volume>30</prism:volume>
+        <dc:title>Critical Reviews? in Biomedical Engineering</dc:title>
+        <dc:identifier>DOI 10.1615/CritRevBiomedEng.v30.i456.80</dc:identifier>
+        <prism:number>4-6</prism:number>
+        <dcterms:alternative>Crit Rev Biomed Eng</dcterms:alternative>
+        <dc:identifier>ISSN 0278-940X</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_101">
+        <z:itemType>attachment</z:itemType>
+        <rdf:resource rdf:resource="files/101/Zecca et al. - 2002 - Control of Multifunctional Prosthetic Hands by Processing the Electromyographic Signal.pdf"/>
+        <dc:title>Full Text</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://figshare.com/articles/journal_contribution/Control_of_multifunctional_prosthetic_hands_by_processing_the_electromyographic_signal/9114473/1/files/16618187.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2025-02-17 00:33:16</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Book rdf:about="#item_103">
+        <z:itemType>book</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Konrad</foaf:surname>
+                        <foaf:givenName>Peter</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>The ABC of EMG</dc:title>
+        <dc:date>4/2005</dc:date>
+    </bib:Book>
+    <bib:Article rdf:about="https://linkinghub.elsevier.com/retrieve/pii/S1350453399000661">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:13504533"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Englehart</foaf:surname>
+                        <foaf:givenName>K</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hudgins</foaf:surname>
+                        <foaf:givenName>B</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Parker</foaf:surname>
+                        <foaf:givenName>P.A</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Stevenson</foaf:surname>
+                        <foaf:givenName>M</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Classification of the myoelectric signal using time-frequency based representations</dc:title>
+        <dc:date>7/1999</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://linkinghub.elsevier.com/retrieve/pii/S1350453399000661</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2025-02-17 00:48:34</dcterms:dateSubmitted>
+        <dc:rights>https://www.elsevier.com/tdm/userlicense/1.0/</dc:rights>
+        <bib:pages>431-438</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:13504533">
+        <prism:volume>21</prism:volume>
+        <dc:title>Medical Engineering &amp; Physics</dc:title>
+        <dc:identifier>DOI 10.1016/S1350-4533(99)00066-1</dc:identifier>
+        <prism:number>6-7</prism:number>
+        <dcterms:alternative>Medical Engineering &amp; Physics</dcterms:alternative>
+        <dc:identifier>ISSN 13504533</dc:identifier>
+    </bib:Journal>
+    <rdf:Description rdf:about="https://www.redalyc.org/articulo.oa?id=133116856017">
+        <z:itemType>document</z:itemType>
+        <dc:publisher>
+            <foaf:Organization>
+               <foaf:name>Avances en Sistemas e Informática</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Romo</foaf:surname>
+                        <foaf:givenName>Harold A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_106"/>
+        <dc:title>Análisis de Señales EMG Superficiales y su Aplicación en Control de Prótesis de Mano</dc:title>
+        <dc:date>2007</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.redalyc.org/articulo.oa?id=133116856017</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+    </rdf:Description>
+    <z:Attachment rdf:about="#item_106">
+        <z:itemType>attachment</z:itemType>
+        <rdf:resource rdf:resource="files/106/Análisis de Señales EMG Superficiales y su Aplicación en Control de Prótesis de Mano.pdf"/>
+        <dc:title>PDF</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://sid-inico.usal.es/idocs/F8/8.2.6-5924/entrenador.pdf">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>13</prism:volume>
+                <dc:title>Dpto. Teoría de la Señal y Comunicaciones</dc:title>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Alonso A.</foaf:surname>
+                        <foaf:givenName>Alonso</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_108"/>
+        <dc:title>Entrenador mioelétrico de prótesis para amputados de brazo y mano</dc:title>
+        <dc:date>2002</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://sid-inico.usal.es/idocs/F8/8.2.6-5924/entrenador.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2025-02-17 13:54:23</dcterms:dateSubmitted>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_108">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Entrenador mioelétrico de prótesis para amputados de brazo y mano</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://sid-inico.usal.es/idocs/F8/8.2.6-5924/entrenador.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2025-02-17 13:54:23</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+</rdf:RDF>

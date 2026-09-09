@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/KYTIA/Documents/TRABAJODEGRADO/Documentos necesarios/test1_4_6_22_PCA_fit_transform_working/test1",
+      "program": "c:/Users/KYTIA/Documents/TRABAJODEGRADO/Documentos necesarios/test1_4_6_22_PCA_fit_transform_working/test1/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

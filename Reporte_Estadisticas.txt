@@ -1,0 +1,29 @@
+====================================================
+    REPORTE DE ESTADÍSTICAS DEL MODELO SVM (EMG)    
+====================================================
+
+--- CONFIGURACIÓN DEL MODELO ---
+Tipo de Kernel:            RBF
+Parámetro C (Caja):         10.0
+Parámetro Gamma:           0.2
+Iteraciones Máximas:       10
+Tiempo de Entrenamiento:   0.0244 segundos
+
+--- SOPORTE VECTORIAL ---
+Total Muestras Entrenamiento: 80
+Cantidad de Vectores Soporte: 18
+Valor Bias (b):               2.845079
+
+--- RENDIMIENTO EN CONJUNTO DE PRUEBA (TEST) ---
+Total Muestras Evaluación:  20
+Verdaderos Positivos (TP): 10
+Verdaderos Negativos (TN): 9
+Falsos Positivos (FP):     1
+Falsos Negativos (FN):     0
+
+--- MÉTRICAS GLOBALES ---
+Exactitud (Accuracy):      95.00%
+Precisión (Precision):     90.91%
+Sensibilidad (Recall):     100.00%
+Especificidad:             90.00%
+====================================================
