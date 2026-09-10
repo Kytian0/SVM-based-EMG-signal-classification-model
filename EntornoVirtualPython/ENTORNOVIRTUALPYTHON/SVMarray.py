@@ -9,7 +9,7 @@ from Matematicas import (
 )
 
 class SVM:
-    def __init__(self, max_iter=10, kernel='rbf', gamma=0.2, C=10.0):
+    def __init__(self, max_iter=100, kernel='rbf', gamma=0.2, C=10.0):
         self.max_iter = max_iter
         self.C = C
         self.gamma = gamma
@@ -23,7 +23,8 @@ class SVM:
     def fit(self, X, y):
         start_time = time.time()
         self.X = convert_to_array(X)
-        self.y = array.array("f", [(val * 2) - 1 for val in y])
+        # Asegurar tipo de datos float respetando el valor original (-1 o 1)
+        self.y = array.array("f", [float(val) for val in y])
         self.lambdas = array.array("f", [0.0] * len(y))
 
         kernel_matrix = self.kernel(self.X, self.X)
@@ -92,7 +93,8 @@ class SVM:
 
     def predict(self, X):
         scores = self.decision_function(X)
-        return [1 if s >= 0 else 0 for s in scores]
+        # Retorna 1 para Mano Cerrada y -1 para Mano Abierta
+        return [1 if s >= 0 else -1 for s in scores]
 
     def exportar_parametros(self, ruta="Parametros.py", decimales=6):
         sv_indices = [i for i, l in enumerate(self.lambdas) if l > 1e-5]
@@ -110,9 +112,9 @@ class SVM:
     def exportar_estadisticas_txt(self, y_real, y_pred, ruta="Reporte_Estadisticas.txt"):
         """ Genera un archivo TXT con el resumen de métricas clave del modelo. """
         tp = sum(1 for r, p in zip(y_real, y_pred) if r == 1 and p == 1)
-        tn = sum(1 for r, p in zip(y_real, y_pred) if r == 0 and p == 0)
-        fp = sum(1 for r, p in zip(y_real, y_pred) if r == 0 and p == 1)
-        fn = sum(1 for r, p in zip(y_real, y_pred) if r == 1 and p == 0)
+        tn = sum(1 for r, p in zip(y_real, y_pred) if r == -1 and p == -1)
+        fp = sum(1 for r, p in zip(y_real, y_pred) if r == -1 and p == 1)
+        fn = sum(1 for r, p in zip(y_real, y_pred) if r == 1 and p == -1)
 
         total = len(y_real)
         accuracy = ((tp + tn) / total) * 100 if total > 0 else 0
