@@ -19,10 +19,10 @@ def imprimir_resumen_consola(fold_num, X_4d_val, y_val, y_pred, X_pca_val, svm):
     print("=" * 80)
     
     print(f"\n[+] Total muestras de validación en este fold: {len(y_val)}")
-    print(f"[+] Bias (b) del modelo SVM:                   {svm.b:.6f}")
+    print(f"[+] Bias (b) del modelo SVM:                  {svm.b:.6f}")
     
     print("\n--------------------------------------------------------------------------------")
-    print(f"{'N°':<4} | {'RMS':<8} | {'MAV':<8} | {'VAR':<8} | {'SSI':<8} | {'PC1':<8} | {'PC2':<8} | {'Real':<8} | {'Pred':<8} | {'Estado':<10}")
+    print(f"{'N°':<4} | {'RMS':<8} | {'MAV':<8} | {'VAR':<8} | {'ZCR':<8} | {'PC1':<8} | {'PC2':<8} | {'Real':<8} | {'Pred':<8} | {'Estado':<10}")
     print("--------------------------------------------------------------------------------")
     
     aciertos = 0
@@ -38,7 +38,7 @@ def imprimir_resumen_consola(fold_num, X_4d_val, y_val, y_pred, X_pca_val, svm):
         else:
             estado = "ERROR"
 
-        print(f"{i+1:<4} | {c_4d[0]:<8.4f} | {c_4d[1]:<8.4f} | {c_4d[2]:<8.4f} | {c_4d[3]:<8.4f} | {c_pca[0]:<8.4f} | {c_pca[1]:<8.4f} | {real_lbl:<8} | {pred_lbl:<8} | {estado:<10}")
+        print(f"{i+1:<4} | {c_4d[0]:<8.4f} | {c_4d[1]:<8.4f} | {c_4d[2]:<8.4f} | {c_4d[3]:<8.0f} | {c_pca[0]:<8.4f} | {c_pca[1]:<8.4f} | {real_lbl:<8} | {pred_lbl:<8} | {estado:<10}")
 
     exactitud = (aciertos / len(y_val)) * 100
     print("--------------------------------------------------------------------------------")
@@ -80,7 +80,10 @@ def main():
 
     # 1. Unificación de los datos reales
     X_completo = KX_train + KX_test + MX_train + MX_test
-    y_completo = Ky_train + Ky_test + MY_train + MY_test
+    y_completo_raw = Ky_train + Ky_test + MY_train + MY_test
+
+    # Forzar etiquetas estrictamente a -1 y 1
+    y_completo = [1 if etiqueta == 1 else -1 for etiqueta in y_completo_raw]
 
     print(f"\n[+] Datos cargados correctamente:")
     print(f"    - Mano Cerrada (K): {len(KX_train) + len(KX_test)} muestras")
@@ -98,17 +101,17 @@ def main():
     for fold_num, (X_tr, y_tr, X_val, y_val) in enumerate(folds, start=1):
         print(f"\n==================== PROCESANDO FOLD {fold_num} ====================")
 
-        # Extracción de características temporales
+        # Extracción de características temporales (RMS, MAV, VAR, ZCR)
         X_tr_4d = [extractor.extraer_4_caracteristicas(sig) for sig in X_tr]
         X_val_4d = [extractor.extraer_4_caracteristicas(sig) for sig in X_val]
 
-        # Reducción de dimensionalidad (4D -> 2D)
-        pca = ReductorPCA()
+        # Reducción de dimensionalidad (4D -> 2D) con PCA Dinámico
+        pca = ReductorPCA(n_components=2)
         X_tr_pca = pca.fit_transform(X_tr_4d)
         X_val_pca = pca.transform(X_val_4d)
 
-        # Entrenar SVM con suficiente número de iteraciones
-        svm = SVM(max_iter=10, kernel='lineal', C=10)
+        # Entrenamiento de la SVM (Kernel RBF + SMO con max_iter optimizado)
+        svm = SVM(max_iter=500, kernel='lienal', C=10)
         svm.fit(X_tr_pca, y_tr)
 
         # Predicción
@@ -121,6 +124,7 @@ def main():
         mejores_modelos.append({
             'acc': acc_fold,
             'svm': svm,
+            'pca': pca,  # Instancia del PCA entrenado en este fold
             'X_tr_4d': X_tr_4d,
             'y_tr': y_tr,
             'X_tr_pca': X_tr_pca,
@@ -144,15 +148,17 @@ def main():
 
     print(f"[+] Seleccionado el mejor modelo (Fold con {best['acc']:.2f}% de exactitud) para graficación y exportación.")
 
-    # Generación de gráficas
+    # 6. Generación de Gráficas
     graficar_transicion_4d_a_2d(best['X_tr_4d'], best['y_tr'], best['X_tr_pca'])
     graficar_svm_frontera(best['X_tr_pca'], best['y_tr'], best['svm'])
     graficar_resultados_test(best['y_val'], best['y_pred'])
 
-    # Exportar parámetros
+    # 7. Exportación de Archivos (Clásico, Estadísticas y RP2040)
     best['svm'].exportar_parametros("Parametros.py")
     best['svm'].exportar_estadisticas_txt(best['y_val'], best['y_pred'], "Reporte_Estadisticas.txt")
-    print("\n[+] Archivos 'Parametros.py' y 'Reporte_Estadisticas.txt' exportados exitosamente.")
+    best['svm'].exportar_parametros_rp2040(pca_model=best['pca'], ruta="parametros_rp2040.txt")
+    
+    print("\n[+] Archivos 'Parametros.py', 'Reporte_Estadisticas.txt' y 'parametros_rp2040.txt' exportados exitosamente.")
 
 
 if __name__ == "__main__":

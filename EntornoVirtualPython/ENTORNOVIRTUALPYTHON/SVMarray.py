@@ -95,19 +95,63 @@ class SVM:
         scores = self.decision_function(X)
         # Retorna 1 para Mano Cerrada y -1 para Mano Abierta
         return [1 if s >= 0 else -1 for s in scores]
-
-    def exportar_parametros(self, ruta="Parametros.py", decimales=6):
+    def exportar_parametros(self, ruta="Parametros.py"):
+        """Exporta los vectores de soporte y bias en formato Python clásico."""
         sv_indices = [i for i, l in enumerate(self.lambdas) if l > 1e-5]
+        
+        lambdas_sv = [self.lambdas[i] for i in sv_indices]
+        etiquetas_sv = [self.y[i] for i in sv_indices]
+        datos_sv = [self.X[i] for i in sv_indices]
+        
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write(f"BIAS = {self.b}\n")
+            f.write(f"LAMBDAS = {lambdas_sv}\n")
+            f.write(f"ETIQUETAS = {etiquetas_sv}\n")
+            f.write(f"DATOS_SOPORTE = {datos_sv}\n")
+            f.write(f"GAMMA = {self.gamma}\n")
+            f.write(f"KERNEL = '{self.kernel_type}'\n")
+            
+        print(f"Parámetros clásicos exportados a '{ruta}'")
+    def exportar_parametros_rp2040(self, pca_model, ruta="modelo_exportado.txt", decimales=6):
+        """
+        Exporta en un único archivo TXT todos los parámetros necesarios para la RP2040:
+        - Medias y desviaciones del PCA (Z-score)
+        - Autovectores del PCA (Proyección)
+        - Lambdas, Etiquetas, Vectores de Soporte (X) y el Bias (b) de la SVM
+        - Parámetros de configuración (gamma, C, tipo de kernel)
+        """
+        sv_indices = [i for i, l in enumerate(self.lambdas) if l > 1e-5]
+        
+        # Filtrar solo los vectores soporte reales
         lambdas_sv = [round(self.lambdas[i], decimales) for i in sv_indices]
         etiquetas_sv = [round(self.y[i], decimales) for i in sv_indices]
         datos_sv = [[round(elem, decimales) for elem in self.X[i]] for i in sv_indices]
+        
+        # Parámetros del PCA
+        pca_mean = [round(m, decimales) for m in pca_model.mean]
+        pca_std = [round(s, decimales) for s in pca_model.std]
+        pca_autovectores = [[round(elem, decimales) for elem in vec] for vec in pca_model.autovectores]
+        
         Br = round(self.b, decimales)
 
-        with open(ruta, "w") as f:
-            f.write(f"Lambdas = {lambdas_sv}\n")
-            f.write(f"Etiquetas = {etiquetas_sv}\n")
-            f.write(f"Datos = {datos_sv}\n")
-            f.write(f"ParametroB = {Br}\n")
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write("# === CONFIGURACIÓN GENERAL ===\n")
+            f.write(f"KERNEL = '{self.kernel_type}'\n")
+            f.write(f"GAMMA = {self.gamma}\n")
+            f.write(f"C_PARAM = {self.C}\n\n")
+            
+            f.write("# === PARÁMETROS DE PREPROCESAMIENTO (PCA) ===\n")
+            f.write(f"PCA_MEAN = {pca_mean}\n")
+            f.write(f"PCA_STD = {pca_std}\n")
+            f.write(f"PCA_AUTOVECTORES = {pca_autovectores}\n\n")
+            
+            f.write("# === PARÁMETROS DEL MODELO SVM ===\n")
+            f.write(f"BIAS = {Br}\n")
+            f.write(f"LAMBDAS_SV = {lambdas_sv}\n")
+            f.write(f"ETIQUETAS_SV = {etiquetas_sv}\n")
+            f.write(f"DATOS_SV = {datos_sv}\n")
+            
+        print(f"¡Parámetros exportados exitosamente a '{ruta}' listos para la RP2040!")
 
     def exportar_estadisticas_txt(self, y_real, y_pred, ruta="Reporte_Estadisticas.txt"):
         """ Genera un archivo TXT con el resumen de métricas clave del modelo. """
