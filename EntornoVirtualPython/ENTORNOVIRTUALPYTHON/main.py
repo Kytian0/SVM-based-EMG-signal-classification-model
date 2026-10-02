@@ -2,15 +2,19 @@ import random
 from Caracteristicas import ExtractorEMG
 from PCA import ReductorPCA
 from SVMarray import SVM
+
 from GraficarPCA import (
     graficar_transicion_4d_a_2d,
     graficar_svm_frontera,
     graficar_resultados_test
 )
 from DatosEmgCaptadas import (
+    Señales, Etiquetas
+)
+"""from DatosEmgCaptadas import (
     KX_train, Ky_train, KX_test, Ky_test,
     MX_train, MY_train, MX_test, MY_test
-)
+)"""
 
 
 def imprimir_resumen_consola(fold_num, X_4d_val, y_val, y_pred, X_pca_val, svm):
@@ -79,16 +83,12 @@ def main():
     print("=== INICIANDO PIPELINE EMG CON VALIDACIÓN CRUZADA (5-FOLD) ===")
 
     # 1. Unificación de los datos reales
-    X_completo = KX_train + KX_test + MX_train + MX_test
-    y_completo_raw = Ky_train + Ky_test + MY_train + MY_test
+    X_completo = Señales
+    y_completo_raw = Etiquetas
 
     # Forzar etiquetas estrictamente a -1 y 1
     y_completo = [1 if etiqueta == 1 else -1 for etiqueta in y_completo_raw]
 
-    print(f"\n[+] Datos cargados correctamente:")
-    print(f"    - Mano Cerrada (K): {len(KX_train) + len(KX_test)} muestras")
-    print(f"    - Mano Abierta (M): {len(MX_train) + len(MX_test)} muestras")
-    print(f"    - Total global:     {len(X_completo)} señales | {len(y_completo)} etiquetas")
 
     # 2. Generación de Folds con semilla fija
     folds = dividir_en_folds(X_completo, y_completo, k=5, seed=42)
@@ -111,7 +111,7 @@ def main():
         X_val_pca = pca.transform(X_val_4d)
 
         # Entrenamiento de la SVM (Kernel RBF + SMO con max_iter optimizado)
-        svm = SVM(max_iter=500, kernel='lienal', C=10)
+        svm = SVM(max_iter=10, kernel='linear', C=10)
         svm.fit(X_tr_pca, y_tr)
 
         # Predicción

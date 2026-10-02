@@ -37,7 +37,7 @@ def predecir_svm(vector_2d):
         else:
             k_val = kernel_rbf(x_sv, vector_2d, GAMMA)
         suma += lam * etiqueta * k_val
-    return -1 if suma >= 0 else 1
+    return 1 if suma >= 0 else -1
 
 def ejecutar_pipeline_emg(senal_cruda, extractor, pca_inf):
     """Procesa una ventana completa de 100 muestras y retorna la clasificación."""
