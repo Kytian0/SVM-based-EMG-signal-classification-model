@@ -49,7 +49,9 @@ class ExtractorEMG:
         return [round(valor_absoluto, 4), round(mav, 4), round(rms, 4), float(zcr)]
 
 extractor = ExtractorEMG()
+"""
 for señal in KX_train:
+    print(señal)
     indice =KX_train.index(señal)
     print("Señal numero "+ str(KX_train.index(señal)))
     print("VALOR ABSOLUTO : " + str(extractor.extraer_4_caracteristicas(señal)[0]))
@@ -62,3 +64,8 @@ for señal in KX_train:
     print("VALOR ABSOLUTO MEDIO :  : " + str(extractor.extraer_4_caracteristicas(MX_train[indice])[1]))
     print("RMS : " + str(extractor.extraer_4_caracteristicas(MX_train[indice])[2]))
     print("Zcr: " + str(extractor.extraer_4_caracteristicas(MX_train[indice])[3]))
+"""
+
+
+print(KX_train[0][0:100])
+print(MX_train[0][0:100])
