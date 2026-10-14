@@ -5,7 +5,7 @@ class ExtractorEMGInferencia:
         self.v_offset = v_offset
         self.umbral_ruido = umbral_ruido
 
-    def extraer_4_caracteristicas(self, señal):
+    def extraer(self, señal):
         """Extrae [Valor Absoluto, MAV, RMS, ZCR] centrando la señal respecto a su offset."""
         s_centrada = [v - self.v_offset for v in señal]
         N = len(s_centrada)
