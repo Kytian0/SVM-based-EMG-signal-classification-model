@@ -8,13 +8,12 @@ from GraficarPCA import (
     graficar_svm_frontera,
     graficar_resultados_test
 )
+from DatosEmgCaptadas import señales, Etiquetas
+Señales=señales
 from DatosEmgCaptadas import (
-    Señales, Etiquetas
-)
-"""from DatosEmgCaptadas import (
     KX_train, Ky_train, KX_test, Ky_test,
     MX_train, MY_train, MX_test, MY_test
-)"""
+)
 
 
 def imprimir_resumen_consola(fold_num, X_4d_val, y_val, y_pred, X_pca_val, svm):
